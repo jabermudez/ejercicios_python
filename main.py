@@ -406,7 +406,7 @@ finally:
 '''
 
 import os 
-
+'''
 path = "C:\\Users\\SENA\\OneDrive\\Escritorio\\file"
 
 if os.path.exists(path):
@@ -417,3 +417,72 @@ if os.path.exists(path):
         print("That is a directory!")
 else: 
     print("That location doesn't exist?")
+
+try:
+    with open('C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\test.txt')  as file:
+        print(file.read())
+except FileNotFoundError:
+    print("That file was not found :(")
+
+
+text = "Yoooooooo\nThis is some text\nHave a good one"
+try:
+    with open('C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\test.txt','w')  as file:
+        print(file.write(text))
+except FileNotFoundError:
+    print("That file was not found :(")
+
+
+text = "Have a nice day! See ya"
+try:
+    with open('C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\test.txt','a')  as file:
+        print(file.write(text))
+except FileNotFoundError:
+    print("\nThat file was not found :(")
+
+#copyfile() = copies contents of a file
+#copy() = copyfile() + permission mode + destination can be a directory
+#copy2() = copy() + copies metadata (file's creation and modification times)
+
+#move files
+import shutil
+
+shutil.copyfile('C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\test.txt','C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\texto.txt') #src.dst
+
+import os
+
+source ="folder"
+destination = "C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\test.txt"
+
+try:
+    if os.path.exists(destination):
+        print("There is already a file there")
+    else: 
+        os.replace(source,destination)
+        print(source+" was moved")
+except FileNotFoundError:
+    print(source+" was not found")
+'''
+
+#delete files
+'''import os
+import shutil
+
+path = 'C:\\Users\\SENA\\OneDrive\\Escritorio\\file\\texto.txt'
+
+try:
+    os.remove(path) #delete a file
+    #os.rmdir(path) #delete an empty directory
+    #shutil.rmtree(path) #delete a diretory containing file
+except FileNotFoundError:
+    print("That file was not found")
+except PermissionError: 
+    print("You do not have permission to delete that")
+except OSError:
+    print(" You cannot delete that using that function")
+else:
+    print(path+" was deleted")
+'''
+#module = a file containing python code. May contain functions, classes, etc.
+#used with modular programming, which is to separate a program into parts
+
